@@ -57,7 +57,6 @@ class App extends Component {
 
   handleChange = (event) => {
     this.setState({ type: event.target.value });
-    console.log(Chart);
   };
 
 
@@ -66,7 +65,12 @@ class App extends Component {
     return (
       <div>
         <div className={classes.card}>
-          <form className={classes.root} autoComplete="off">
+          <Card>
+            <CardContent>
+              <Typography className={classes.title} color="textSecondary">
+                Choose your graph type above
+              </Typography>
+              <form className={classes.root} autoComplete="off">
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="chart-type">Chart Type</InputLabel>
               <Select
@@ -88,12 +92,6 @@ class App extends Component {
               </Select>
             </FormControl>
           </form>
-
-          <Card>
-            <CardContent>
-              <Typography className={classes.title} color="textSecondary">
-                Choose your graph type above
-              </Typography>
               <Chart
                 pubnub={this.pubnub}
                 channels={['eon-components']}
@@ -115,7 +113,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.pubnub  =  new PubNubReact({
-      subscribeKey:  'sub-c-6af8440e-4890-11e8-a3a7-d29c801c92ae' // Your sub key
+      subscribeKey:  'demo' // Your sub key
     });
     this.pubnub.init(this);
   }
